@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useRef, useEffect, useContext } from "react";
+
+import AuthContext from "../../context/auth-context";
 
 const Cockpit = (props) => {
+  const toggleButtonRef = useRef(null);
+  useEffect(() => {
+    toggleButtonRef.current.click();
+  }, []);
+
+  const authContext = useContext(AuthContext);
+
   const style = {
     backgroundColor: "white",
     font: "inherit",
@@ -25,8 +34,15 @@ const Cockpit = (props) => {
     <div>
       <h1>Hi, I'm a React App</h1>
       <p className={classes.join(" ")}>This is really working!</p>
-      <button style={style} onClick={props.togglePersonsHandler}>
+      <button
+        ref={toggleButtonRef}
+        style={style}
+        onClick={props.togglePersonsHandler}
+      >
         Toggle Persons
+      </button>
+      <button onClick={authContext.login}>
+        {authContext.authenticated ? "Logout" : "Login"}
       </button>
     </div>
   );
