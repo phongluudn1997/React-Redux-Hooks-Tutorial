@@ -1,12 +1,19 @@
 import React from "react";
 import "./App.css";
+import Layout from "./components/Layout/Layout";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {
-    return <h1>Hello World</h1>;
+    return (
+      <h1>
+        <Layout>
+          <p>Test Main Page.</p>
+        </Layout>
+      </h1>
+    );
   }
 }
 
